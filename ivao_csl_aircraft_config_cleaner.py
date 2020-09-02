@@ -38,7 +38,6 @@ for airplane in airplane_folders:
     aircraft_cfg_contents = aircraft_cfg_contents.replace("isAirTraffic=0","isAirTraffic=1")
     aircraft_cfg_contents = aircraft_cfg_contents.replace("BOARDING_RAMP=0","BOARDING_RAMP=1")
     aircraft_cfg_contents = aircraft_cfg_contents.replace("SMALL_PUSHBACK=1","SMALL_PUSHBACK=0")
-    aircraft_cfg_contents = aircraft_cfg_contents.replace('icao_airline=""','')
 
     # Save changes.
     f = open(filename, "w")
