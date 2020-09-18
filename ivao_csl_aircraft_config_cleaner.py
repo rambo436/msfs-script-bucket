@@ -64,5 +64,5 @@ for airplane in airplane_folders:
                     icao_airline = line.split("=",1)[1].upper() # Splits text into a list where "=" is the delimeter; grabs second item in list (value).
                                     # fltsim_config_items[-1].update({'texture': line, 'icao_airline': icao_airline}) # Finds last item in list and adds new dictionary key:value pairs.
                                     # print(fltsim_config_items)
-                    line = line + "icao_airline=" +icao_airline #+ "\n"
+                    line = line + "icao_airline=" +icao_airline[0:3] #+ "\n"
                 out_file.write(line)
