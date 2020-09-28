@@ -51,6 +51,8 @@ for airplane in airplane_folders:
 
     with open(filename, "w") as out_file:
         for line in config_in_mem:
+            if "icao_type_designator" in line:
+                 icao_type_designator = line.split("=",1)[1].upper()
             # print(line)
             if line not in "icao_airline": # Some files/entries have icao_airline="" this will ensure those are not written to config and only we add that field.
                 if isFlightSimHeader(line):
@@ -61,8 +63,11 @@ for airplane in airplane_folders:
                     copy = False
 
                 elif "Texture=" in line:
+                    print("icao value= " + line.split("=",1)[1].upper())
                     icao_airline = line.split("=",1)[1].upper() # Splits text into a list where "=" is the delimeter; grabs second item in list (value).
                                     # fltsim_config_items[-1].update({'texture': line, 'icao_airline': icao_airline}) # Finds last item in list and adds new dictionary key:value pairs.
                                     # print(fltsim_config_items)
-                    line = line + "icao_airline=" +icao_airline[0:3] #+ "\n"
+                    print("ICAO AIRLINE: " + icao_airline)
+                    line = line + 'icao_airline=' +icao_airline[0:4] + '"\nicao_type_designator=' + icao_type_designator
+                    # print(line)
                 out_file.write(line)
